@@ -12,7 +12,7 @@ function info(id)
 	local peerLevel = peer:level()
 	local peerRank = peer:rank()
 	
-	managers.chat:_receive_message(1, "Player Info", "Infos of " Net:GetNameFromPeerID(id), Color.green)
+	managers.chat:_receive_message(1, "Player Info", "Infos of " .. Net:GetNameFromPeerID(id), Color.green)
 	managers.chat:_receive_message(1, "Name", peerName, Color.red)
 	managers.chat:_receive_message(1, "ID", peerID, Color.red)
 	managers.chat:_receive_message(1, "Character", peerChar, Color.red)
