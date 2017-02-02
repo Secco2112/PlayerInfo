@@ -12,19 +12,24 @@ function info(id)
 	local peerLevel = peer:level()
 	local peerRank = peer:rank()
 	
-	
+	managers.chat:_receive_message(1, "Player Info", "Infos of " Net:GetNameFromPeerID(id), Color.green)
+	managers.chat:_receive_message(1, "Name", peerName, Color.red)
+	managers.chat:_receive_message(1, "ID", peerID, Color.red)
+	managers.chat:_receive_message(1, "Character", peerChar, Color.red)
+	managers.chat:_receive_message(1, "Level and rank", "(" .. peer:rank() .. ") " .. peerLevel, Color.red)
 end
 
-if Net:IsMultiplayer() and Utils:IsInHeist() then
+if Net:IsMultiplayer() then
 	local peer = managers.network._session:peer(id)
-	local eu = Net:GetNameFromPeerID(Net:LocalPeerID())
+	local meuId = Net:LocalPeerID()
+	local eu = Net:GetNameFromPeerID(meuIp)
 	local menu_options = {}
-	menu_options[#menu_options+1] = { text = eu, data = Net:LocalPeerID(), callback = info }
+	menu_options[#menu_options+1] = { text = eu, data = meuId, callback = info }
 	for _, peer in pairs(managers.network:session():peers()) do
 		menu_options[#menu_options+1] = { text = peer:name(), data = peer:id(), callback = info }
 	end
 	menu_options[#menu_options+1] = {text = "", is_cancel_button = true}
 	menu_options[#menu_options+1] = {text = "Close", is_cancel_button = true}
-	local muteMenu = QuickMenu:new("Fast Mute", "I want to mute...", menu_options)
-	muteMenu:Show()
+	local infoMenu = QuickMenu:new("Player Info", "Show the infos of...", menu_options)
+	infoMenu:Show()
 end
