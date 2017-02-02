@@ -1,0 +1,18 @@
+{
+	"name" : "Player Info",
+	"description" : "Show the player info in the game"
+	"author" : "Secco2112",
+        "version" : "1.0",
+	"contact" : "gustavomarini9@gmail.com",
+	"keybinds" : [
+		{
+			"keybind_id" : "Player_Info",
+			"name" : "Player Info",
+			"description" : "Map a key to show the Player Info"
+			"script_path" : "lua/menu.lua",
+			"run_in_menu" : true,
+			"run_in_game" : true,
+			"localized" : false
+		}
+	]
+}
