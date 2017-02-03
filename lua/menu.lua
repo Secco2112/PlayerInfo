@@ -43,11 +43,11 @@ function info(id)
 end
 
 if Net:IsMultiplayer() then
-	local peer = managers.network._session:peer(id)
-	local myId = managers.network:session():local_peer():id()
-	local peerLocal = Net:GetNameFromPeerID(myId)
+	local peer = managers.network:session():local_peer()
+	local id=peer:id()
+	
 	local menu_options = {}
-	menu_options[#menu_options+1] = { text = peerLocal, data = myId, callback = info }
+	menu_options[#menu_options+1] = { text = Net:GetNameFromPeerID(id), data = id, callback = info }
 	for _, peer in pairs(managers.network:session():peers()) do
 		menu_options[#menu_options+1] = { text = peer:name(), data = peer:id(), callback = info }
 	end
