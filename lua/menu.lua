@@ -1,4 +1,5 @@
 local Net = _G.LuaNetworking
+local playerPing = 0
 
 function info(id)
 	local peer = managers.network._session:peer(id)
@@ -24,18 +25,17 @@ function info(id)
 	}
 	
 	local character = peer:character()
+	local qos = Network:qos(peer:rpc()) or {}
+	playerPing = qos and qos.ping or 0
+	playerPing = math.round(playerPing)
 	
 	managers.chat:_receive_message(1, "Player Info", "Infos of " .. peer:name(), Color.green)
-	--if peer:rank then
-		
-	--end
+
 	managers.chat:_receive_message(1, "Name", peer:name(), Color.red)
 	managers.chat:_receive_message(1, "ID", peer:id(), Color.red)
 	managers.chat:_receive_message(1, "IP", peer:ip(), Color.red)
 	managers.chat:_receive_message(1, "Character", personagens[tostring(character)], Color.red)
-	--managers.chat:_receive_message(1, "Ping", peer:qos(), Color.red)
-	--managers.chat:_receive_message(1, "Rpc", peer:rpc(), Color.red)
-	--managers.chat:_receive_message(1, "Steam rpc", peer:steam_rpc(), Color.red)
+	managers.chat:_receive_message(1, "Ping", tostring(playerPing) .. "ms", Color.red)
 end
 
 if Net:IsMultiplayer() then
