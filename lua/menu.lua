@@ -14,14 +14,6 @@ function info(id)
 	local peerRank = peer:rank()
 	]]
 	
-	Dallas	menu_russian
-	Wolf	menu_german
-	Chains	menu_spanish
-	Houston	menu_american
-	John Wick	menu_jowi
-	Hoxton	menu_old_hoxton
-	Clover	menu_female_1
-	
 	personagens = {
 		["russian"] = "Dallas",
 		["american"] = "Houston",
@@ -34,14 +26,21 @@ function info(id)
 	local character = peer:character()
 	
 	managers.chat:_receive_message(1, "Player Info", "Infos of " .. peer:name(), Color.green)
+	--if peer:rank then
+		
+	--end
 	managers.chat:_receive_message(1, "Name", peer:name(), Color.red)
 	managers.chat:_receive_message(1, "ID", peer:id(), Color.red)
+	managers.chat:_receive_message(1, "IP", peer:ip(), Color.red)
 	managers.chat:_receive_message(1, "Character", personagens[tostring(character)], Color.red)
+	--managers.chat:_receive_message(1, "Ping", peer:qos(), Color.red)
+	--managers.chat:_receive_message(1, "Rpc", peer:rpc(), Color.red)
+	--managers.chat:_receive_message(1, "Steam rpc", peer:steam_rpc(), Color.red)
 end
 
 if Net:IsMultiplayer() then
 	local peer = managers.network._session:peer(id)
-	local myId = Net:LocalPeerID()
+	local myId = managers.network:session():local_peer():id()
 	local peerLocal = Net:GetNameFromPeerID(myId)
 	local menu_options = {}
 	menu_options[#menu_options+1] = { text = peerLocal, data = myId, callback = info }
