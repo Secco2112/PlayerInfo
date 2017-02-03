@@ -44,7 +44,7 @@ end
 
 if Net:IsMultiplayer() then
 	local local_peer = managers.network:session():local_peer()
-	local peer = managers.network._session:peer();
+	local peer = managers.network._session:peer(id);
 	local local_id=local_peer:id()
 	local id = peer:id()
 	
