@@ -22,6 +22,10 @@ function info(id)
 		["spanish"] = "Chains",
 		["jowi"] = "John Wick",
 		["female_1"] = "Clover",
+		["old_hoxton"] = "Hoxton",
+		["dragan"] = "Dragan",
+		["jacket"] = "Jacket",
+		["boonie"] = "Boonie",
 	}
 	
 	local character = peer:character()
