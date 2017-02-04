@@ -26,6 +26,9 @@ function info(id)
 		["dragan"] = "Dragan",
 		["jacket"] = "Jacket",
 		["boonie"] = "Boonie",
+		["sokol"] = "Sokol",
+		["dragon"] = "Jiro",
+		["bodhi"] = "Bodhi",
 	}
 	
 	local character = peer:character()
