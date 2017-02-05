@@ -42,7 +42,7 @@ function info(id)
 	
 	managers.chat:_receive_message(1, "Player Info", "Infos of " .. peer:name(), Color.green)
 
-	managers.chat:_receive_message(1, "Name", peer:name(), Color.red)
+	managers.chat:_receive_message(1, "Level", peer:rank() .. " - " .. peer:level(), Color.red)
 	managers.chat:_receive_message(1, "ID", peer:id(), Color.red)
 	managers.chat:_receive_message(1, "IP", peer:ip(), Color.red)
 	managers.chat:_receive_message(1, "Character", personagens[tostring(character)], Color.red)
