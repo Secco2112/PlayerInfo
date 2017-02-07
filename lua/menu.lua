@@ -42,18 +42,15 @@ function info(id)
 	
 	managers.chat:_receive_message(1, "Player Info", "Infos of " .. peer:name(), Color.green)
 
-	managers.chat:_receive_message(1, "Level:", peer:rank() .. " - " .. peer:level(), Color.red)
-	managers.chat:_receive_message(1, "ID:", peer:id(), Color.red)
-	managers.chat:_receive_message(1, "IP:", peer:ip(), Color.red)
-	managers.chat:_receive_message(1, "Character:", personagens[tostring(character)], Color.red)
-	managers.chat:_receive_message(1, "Ping:", tostring(playerPing) .. "ms", Color.red)
+	managers.chat:_receive_message(1, "ID", peer:id(), Color.red)
+	managers.chat:_receive_message(1, "IP", peer:ip(), Color.red)
+	managers.chat:_receive_message(1, "Character", personagens[tostring(character)], Color.red)
+	managers.chat:_receive_message(1, "Ping", tostring(playerPing) .. "ms", Color.red)
 end
 
 if Net:IsMultiplayer() then
-	local local_peer = managers.network:session():local_peer()
 	local peer = managers.network._session:peer(id);
-	local local_id=local_peer:id()
-	local id = peer:id()
+	local local_id = Net:LocalPeerID()
 	
 	local menu_options = {}
 	menu_options[#menu_options+1] = { text = Net:GetNameFromPeerID(local_id), data = local_id, callback = info }
